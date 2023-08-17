@@ -22,7 +22,7 @@ export const Container = styled.header`
 
   .menu {
   width: 100%;
-  height: 10rem;
+  height: 7rem;
   background-color: #e6e6e6;
   top: 0;
   z-index: -1;
@@ -45,6 +45,7 @@ export const Container = styled.header`
 
   a{
     text-decoration: none;
+    color: #000;
   }
 }
 }
@@ -53,7 +54,7 @@ export const Container = styled.header`
 export const LogoImg = styled.img`
   width: 9rem;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (min-width: 550px) {
    width: 10rem;
 }
 
@@ -75,7 +76,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 550px) {
    display: none;
 }
 
@@ -122,7 +123,7 @@ ${({ isVisible }) => css`
 
   animation: ${({ isVisible }) => (isVisible ? css`${slideDownAnimation} 0.5s ease` : 'none')}; 
   
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 550px) {
    display: none;
   }
   `
@@ -154,7 +155,7 @@ export const Ul = styled.ul`
     }
   }
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 550px) {
    display: none;
 }
   `

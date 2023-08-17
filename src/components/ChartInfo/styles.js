@@ -18,6 +18,9 @@ export const ContainerForm = styled.div`
   align-items: center;
   }
 
+  @media screen and (max-width: 500px){
+    margin-top: 5rem;
+  }
 
 `
 
@@ -155,7 +158,7 @@ export const InfoInputs = styled.div`
   display: grid;
   grid-template-columns: 1fr;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 500px) {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
@@ -172,11 +175,25 @@ export const ContainerFirstInputs = styled.div`
   margin-top: 2rem; 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2px;
+  grid-template-rows: 4rem;
+
+  .input-pair{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin: 1rem 0;
+
+    .input-no-margin{
+      margin: 0;
+    }
+  }
 
 
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: 500px) {
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5rem;
+
     gap: 1rem;
   }
 `
@@ -184,6 +201,12 @@ export const ContainerFirstInputs = styled.div`
 export const FirtTitle = styled.h1`
   font-size: 1.6rem;
   font-family: 'Preahvihear',sans-serif;
+  text-align: center;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.3rem;
+  }
+
 `
 
 export const SecondTitle = styled.h1`
@@ -191,4 +214,10 @@ font-size: 1.4rem;
 color: gray;
 margin-bottom: 2rem;
 font-family: 'Preahvihear',sans-serif;
+text-align: center;
+
+@media screen and (max-width: 500px) {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
 `

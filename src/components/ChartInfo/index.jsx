@@ -183,10 +183,17 @@ const ChartInfo = () => {
           )}
         />
         <ContainerFirstInputs>
-          <label htmlFor="chartTitle">Choose chart Title</label>
-          <label htmlFor="dataUnit">Choose data unit</label>
-          <Input type="text" {...register("chartTitle")} placeholder="Chart Title" required />
-          <Input type="text" {...register("dataUnit")} placeholder="Data Unit" required />
+
+          <div className="input-pair">
+            <label htmlFor="chartTitle" className="labels">Choose chart Title</label>
+            <Input type="text" {...register("chartTitle")} placeholder="Chart Title" required className="input-no-margin" />
+          </div>
+
+          <div className="input-pair">
+            <label htmlFor="dataUnit" className="labels">Choose data unit</label>
+            <Input type="text" {...register("dataUnit")} placeholder="Data Unit" required className="input-no-margin" />
+          </div>
+
         </ContainerFirstInputs>
         {inputPairs.map((pair, index) => (
           <InfoInputs key={index}>
