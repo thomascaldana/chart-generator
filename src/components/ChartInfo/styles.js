@@ -3,7 +3,7 @@ import { FiDownload } from 'react-icons/fi'
 
 
 export const ContainerForm = styled.div`
-  margin-top: 8rem;
+  margin-top: 6rem;
   padding: 1rem;
   display: flex;
   flex-flow: column nowrap;
@@ -20,6 +20,18 @@ export const ContainerForm = styled.div`
 
   @media screen and (max-width: 500px){
     margin-top: 5rem;
+  }
+
+`
+export const ContainerItems = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 1300px){
+    flex-flow: row nowrap;
+    gap: 2rem;
   }
 
 `

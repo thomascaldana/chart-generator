@@ -3,6 +3,7 @@ import GlobalStyles from "./styles/GlobalStyles"
 import ChartGenerator from "./containers/ChartGenerator"
 import { Header } from './components/Header'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ChartExamples from "./components/ChartExamples"
 
 function App () {
 
@@ -13,7 +14,7 @@ function App () {
         <Header />
         <Routes>
           <Route path="/" element={<ChartGenerator />} />
-          {/* <Route path="/ChartExamples" element={} /> */}
+          <Route path="/ChartExamples" element={<ChartExamples />} />
         </Routes>
       </BrowserRouter>
       <GlobalStyles />

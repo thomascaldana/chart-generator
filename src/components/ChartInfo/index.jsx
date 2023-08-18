@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import QuickChart from 'quickchart-js';
 import { useForm, Controller } from "react-hook-form";
-import { ContainerForm, Input, SubmitInput, ImageContainer, ChartImg, FiDownloadStyled, AddButton, DeleteButton, DownloadButton, InfoInputs, SelectItemStyles, ContainerFirstInputs, FirtTitle, SecondTitle } from './styles'
+import { ContainerForm, Input, SubmitInput, ImageContainer, ChartImg, FiDownloadStyled, AddButton, DeleteButton, DownloadButton, InfoInputs, SelectItemStyles, ContainerFirstInputs, FirtTitle, SecondTitle, ContainerItems } from './styles'
 import { FcPieChart, FcDoughnutChart, FcBarChart, FcLineChart } from "react-icons/fc";;
 
 const chartTypes = [
@@ -132,6 +132,7 @@ const ChartInfo = () => {
             display: isNotBarOrLine,
             labels: {
               fontSize: 10,
+              boxWidth: 10,
             },
           },
           tooltips: {
@@ -161,80 +162,81 @@ const ChartInfo = () => {
     <ContainerForm>
       <FirtTitle>Welcome to Chart Generator!</FirtTitle>
       <SecondTitle>Choose your chart Type, fill out the informations and create your Chart!</SecondTitle>
-      <form onSubmit={handleSubmit((formData) => setData(formData))} className="form-container">
-        <label htmlFor="chartType">Choose chart type</label>
-        <Controller
-          name="chartType"
-          control={control}
-          defaultValue={chartTypes[0]}
-          render={({ field }) => (
-            <Select
-              {...field}
-              options={chartTypes}
-              isSearchable={false}
-              getOptionLabel={(option) => (
-                <SelectItemStyles>
-                  {option.icon}
-                  {option.label}
-                </SelectItemStyles>
-              )}
-              styles={customSelectStyles}
-            />
+      <ContainerItems>
+        <form onSubmit={handleSubmit((formData) => setData(formData))} className="form-container">
+          <label htmlFor="chartType">Choose chart type</label>
+          <Controller
+            name="chartType"
+            control={control}
+            defaultValue={chartTypes[0]}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={chartTypes}
+                isSearchable={false}
+                getOptionLabel={(option) => (
+                  <SelectItemStyles>
+                    {option.icon}
+                    {option.label}
+                  </SelectItemStyles>
+                )}
+                styles={customSelectStyles}
+              />
+            )}
+          />
+          <ContainerFirstInputs>
+
+            <div className="input-pair">
+              <label htmlFor="chartTitle" className="labels">Choose chart Title</label>
+              <Input type="text" {...register("chartTitle")} placeholder="Chart Title" required className="input-no-margin" />
+            </div>
+
+            <div className="input-pair">
+              <label htmlFor="dataUnit" className="labels">Choose data unit</label>
+              <Input type="text" {...register("dataUnit")} placeholder="Data Unit" required className="input-no-margin" />
+            </div>
+
+          </ContainerFirstInputs>
+          {inputPairs.map((pair, index) => (
+            <InfoInputs key={index}>
+              <Input
+                type="text"
+                {...register(`label${index}`)}
+                placeholder={`Label ${index + 1}`}
+                required
+              />
+              <Input
+                type="number"
+                {...register(`data${index}`)}
+                placeholder={`Data ${index + 1}`}
+                required
+              />
+            </InfoInputs>
+          ))}
+          {inputPairs.length < 7 && (
+            <AddButton type="button" onClick={addInputPair}>
+              + Add more info
+            </AddButton>
           )}
-        />
-        <ContainerFirstInputs>
+          {inputPairs.length > 0 && (
+            <DeleteButton type="button" onClick={deleteLastInputPair}>
+              - Less info
+            </DeleteButton>
+          )}
+          <SubmitInput type="submit" value="CREATE CHART" />
+        </form>
+        <ImageContainer>
+          {chartUrl && <ChartImg src={chartUrl} alt="chart" />}
+          {chartUrl && (
+            <DownloadButton type="button" onClick={downloadChartImage}>
+              <p>Download Chart</p>
+              {<FiDownloadStyled />}
+            </DownloadButton>
+          )}
+        </ImageContainer>
 
-          <div className="input-pair">
-            <label htmlFor="chartTitle" className="labels">Choose chart Title</label>
-            <Input type="text" {...register("chartTitle")} placeholder="Chart Title" required className="input-no-margin" />
-          </div>
+      </ContainerItems>
 
-          <div className="input-pair">
-            <label htmlFor="dataUnit" className="labels">Choose data unit</label>
-            <Input type="text" {...register("dataUnit")} placeholder="Data Unit" required className="input-no-margin" />
-          </div>
-
-        </ContainerFirstInputs>
-        {inputPairs.map((pair, index) => (
-          <InfoInputs key={index}>
-            <Input
-              type="text"
-              {...register(`label${index}`)}
-              placeholder={`Label ${index + 1}`}
-              required
-            />
-            <Input
-              type="number"
-              {...register(`data${index}`)}
-              placeholder={`Data ${index + 1}`}
-              required
-            />
-          </InfoInputs>
-        ))}
-        {inputPairs.length < 7 && (
-          <AddButton type="button" onClick={addInputPair}>
-            + Add more info
-          </AddButton>
-        )}
-        {inputPairs.length > 0 && (
-          <DeleteButton type="button" onClick={deleteLastInputPair}>
-            - Less info
-          </DeleteButton>
-        )}
-        <SubmitInput type="submit" value="CREATE CHART" />
-      </form>
-      <ImageContainer>
-        {chartUrl && <ChartImg src={chartUrl} alt="chart" />}
-        {chartUrl && (
-          <DownloadButton type="button" onClick={downloadChartImage}>
-            <p>Download Chart</p>
-            {<FiDownloadStyled />}
-          </DownloadButton>
-        )}
-      </ImageContainer>
-      <div>
-        <h2>Some chart examples</h2>
-      </div>
     </ContainerForm>
   );
 };
