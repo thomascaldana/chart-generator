@@ -199,18 +199,25 @@ const ChartInfo = () => {
           </ContainerFirstInputs>
           {inputPairs.map((pair, index) => (
             <InfoInputs key={index}>
-              <Input
-                type="text"
-                {...register(`label${index}`)}
-                placeholder={`Label ${index + 1}`}
-                required
-              />
-              <Input
-                type="number"
-                {...register(`data${index}`)}
-                placeholder={`Data ${index + 1}`}
-                required
-              />
+              <div className="input-box">
+                <Input
+                  type="text"
+                  {...register(`label${index}`)}
+                  /* placeholder={`Label ${index + 1}`} */
+                  required
+                />
+                <span>{`Label ${index + 1}`}</span>
+              </div>
+
+              <div className="input-box">
+                <Input
+                  type="number"
+                  {...register(`data${index}`)}
+                  /* placeholder={`Data ${index + 1}`} */
+                  required
+                />
+                <span>{`Data ${index + 1}`}</span>
+              </div>
             </InfoInputs>
           ))}
           {inputPairs.length < 7 && (
