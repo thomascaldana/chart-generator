@@ -47,7 +47,7 @@ export const Input = styled.input`
   border: 1px solid black;
   padding: 10px 15px;
   margin: 10px 0;
-  font-size: 14px
+  font-size: 14px;
 `
 export const SubmitInput = styled.input`
   position: relative;
@@ -174,6 +174,31 @@ export const InfoInputs = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+
+  input:focus + span,
+  input:valid + span {
+    color: #000;
+    transform: translateX(10px) translateY(3px);
+    font-size: 0.75rem;
+    padding: 0 10px;
+    background-color: #f1f1f1;
+      }
+
+  .input-box{
+    position: relative ;
+
+    span{
+    position: absolute;
+    left: 0;
+    padding: 1.3rem 1rem;
+    pointer-events: none;
+    color: #808080;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: 0.4s
+  }
+}
 `
 
 
