@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ContainerItems, Img } from './styles'
+import { Container, ContainerItems, FirstTitle, Img } from './styles'
 import chart1 from '../../assets/imgs/chart1.png'
 import chart2 from '../../assets/imgs/chart2.png'
 import chart3 from '../../assets/imgs/chart3.png'
@@ -11,7 +11,7 @@ const ChartExamples = () => {
 
   return (
     <Container>
-      <h1>Chart Examples:</h1>
+      <FirstTitle>Chart Examples:</FirstTitle>
       <ContainerItems>
         <Img src={chart1} />
         <Img src={chart2} />
