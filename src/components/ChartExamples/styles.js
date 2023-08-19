@@ -16,8 +16,10 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 5rem;
-  @media screen and (max-width: 500px){
 
+  @media screen and (max-width: 450px){
+    margin: 5rem auto;
+    gap: 2rem;
   }
 
 `
@@ -27,16 +29,31 @@ export const ContainerItems = styled.div`
   grid-template-rows: 14rem;
   align-items: center;
   gap: 6rem;
-  @media screen and (max-width: 500px){
 
+
+  @media screen and (max-width: 800px){
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (max-width: 450px){
+    gap: 3rem;
   }
 
 `
 export const Img = styled.img`
   width: 25rem;
   border: 2px dashed lightgray;
-  @media screen and (max-width: 500px){
 
+  @media screen and (max-width: 1000px){
+    width: 21rem;
+  }
+
+  @media screen and (max-width: 800px){
+    width: 25rem;
+  }
+  
+  @media screen and (max-width: 450px){
+    width: 17rem;
   }
 
 `
