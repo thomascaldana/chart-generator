@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Container, Nav, MenuOptions, Ul, LogoImg } from './styles'
 import Logo from '../../assets/imgs/data-lab-icon.svg'
 import { Link } from 'react-router-dom'
